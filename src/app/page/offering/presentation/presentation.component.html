@@ -1,0 +1,145 @@
+<section class="breadcrumbs">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <ol>
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="../"> Offering </a></li>
+        <li>Module Menu</li>
+      </ol>
+    </div>
+  </div>
+</section>
+<!--Vertical Menu content -->
+
+<main id="main">
+  <!-- ======= Team Section ======= -->
+  <section id="services" class="services section-bg">
+    <div class="container" data-aos="fade-up">
+      <div class="row">
+        <div
+          class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4 offering-presentation"
+          *ngFor="let item of list"
+        >
+          <div class="icon-box">
+            <div class="icon">
+              <img [src]="trustImage(item?.thumbnail)" alt="" />
+            </div>
+            <div class="menu-container">
+              <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <ng-container
+                  *ngIf="
+                    item.type === 'Video' ||
+                    (item.type === 'Video Link' || item.type === 'Document Link') ||
+                    (item.type === 'File' &&
+                      (item.ext?.toLowerCase() === 'pdf' ||
+                        item.ext?.toLowerCase() === 'pptx' ||
+                        item.ext?.toLowerCase() === 'ppt'))
+                  "
+                >
+                  <ng-container
+                    *ngIf="
+                      (item.type !== 'Video Link' && item.type !== 'Document Link') && item.ext?.toLowerCase() !== 'pdf';
+                      else linkButton
+                    "
+                  >
+                    <button
+                      mat-menu-item
+                      (click)="handleOpenPresentation(item)"
+                    >
+                      <p class="link">
+                        {{ item.type === "Video" ? "Play" : "Open" }}
+                      </p>
+                    </button>
+                  </ng-container>
+                  <ng-template #linkButton>
+                    <a
+                      class="link"
+                      [href]="trustOpenNewTabLink(item)"
+                      target="_blank"
+                    >
+                      <button class="link" mat-menu-item>Open</button>
+                    </a>
+                  </ng-template>
+                </ng-container>
+                <a
+                  class="link"
+                  *ngIf="(item.type !== 'Video Link' && item.type !== 'Document Link')"
+                  [href]="trustDownload(item)"
+                  class="link"
+                  target="_blank"
+                >
+                  <button class="link" mat-menu-item>Download</button>
+                </a>
+                <button mat-menu-item (click)="handleShareWithVideo(item)">
+                  <p class="link">Share with</p>
+                </button>
+              </mat-menu>
+            </div>
+            <ng-container
+              *ngIf="
+                item.type === 'Video' ||
+                  (item.type === 'Video Link' || item.type === 'Document Link') ||
+                  (item.type === 'File' &&
+                    (item.ext?.toLowerCase() === 'pdf' ||
+                      item.ext?.toLowerCase() === 'pptx' ||
+                      item.ext?.toLowerCase() === 'ppt'));
+                else downloadBlock
+              "
+            >
+              <ng-container
+                *ngIf="
+                  (item.type !== 'Video Link' && item.type !== 'Document Link') && item.ext?.toLowerCase() !== 'pdf';
+                  else nameLinkBlock
+                "
+              >
+                <h4
+                  class="link cut-text"
+                  (click)="handleOpenPresentation(item)"
+                >
+                  {{ item?.name }}
+                </h4>
+              </ng-container>
+              <ng-template #nameLinkBlock>
+                <h4 class="link cut-text">
+                  <a
+                    [href]="
+                      trustLink(
+                        item.type === 'File' ? API_URL + item.link : item.link
+                      )
+                    "
+                    target="_blank"
+                    >{{ item?.name }}</a
+                  >
+                </h4>
+              </ng-template>
+            </ng-container>
+            <ng-template #downloadBlock>
+              <h4 class="link cut-text">
+                <a [href]="trustDownload(item)" target="_blank">{{
+                  item?.name
+                }}</a>
+              </h4>
+            </ng-template>
+            <p class="cut-text">{{ item?.shortDescription }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="clients" class="clients">
+    <div class="container">
+      <div class="row">
+        <div
+          class="d-flex align-items-center justify-content-center"
+          data-aos="zoom-in"
+        >
+          <img src="assets/img/team/workplace.png" class="img-fluid" alt="" />
+          &nbsp;&nbsp;&nbsp;&nbsp; Coming Soon
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,24 @@
+<div mat-dialog-title class="mat-dialog-title">
+  <h2>{{ data?.title }}</h2>
+</div>
+<mat-dialog-content class="mat-typography">
+  <mat-form-field class="option-modal" appearance="fill">
+    <mat-select required [(value)]="selected">
+      <mat-option
+        *ngFor="let item of data?.categories"
+        [value]="item._id"
+        [style]="{
+          'background-color': item.color,
+          color: item.color ? '#fff' : '#000',
+          margin: '5px',
+          'border-radius': '5px'
+        }"
+        >{{ item.name }}</mat-option
+      >
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions class="formAction" align="center">
+  <button mat-button [mat-dialog-close]="null">Cancel</button>
+  <button mat-button [mat-dialog-close]="selected" cdkFocusInitial>View</button>
+</mat-dialog-actions>

@@ -1,0 +1,11 @@
+<div id="app-container" scroll-spy (scrollChange)="onScrollChange($event)">
+  <app-header *ngIf="path !== '/login'"></app-header>
+
+  <router-outlet></router-outlet>
+
+  <app-footer></app-footer>
+
+  <app-preloader></app-preloader>
+
+  <app-back-to-top *ngIf="showBackToTop"></app-back-to-top>
+</div>

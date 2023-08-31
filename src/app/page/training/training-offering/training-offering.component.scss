@@ -1,0 +1,51 @@
+.offering {
+  margin-right: 0px;
+  .icon-box {
+    .icon {
+      width: 131px;
+      height: 131px;
+      margin-bottom: 0px;
+      img {
+        max-width: 131px;
+        max-height: 131px;
+        height: auto;
+      }
+    }
+  }
+}
+.services {
+  padding-top: 0;
+  .icon-box {
+    width: 100%;
+  }
+}
+.breadcrumbs {
+  .container {
+    font-family: "Segoe UI";
+  }
+}
+
+// @media screen and(max-width: 1400px) {
+//   .offering {
+//     margin-right: 0px;
+//   }
+// }
+@media screen and(max-width: 1200px) {
+  .offering {
+    width: 33%;
+  }
+}
+@media screen and(max-width: 1000px) {
+  .offering {
+    width: 50%;
+  }
+}
+
+@media screen and(max-width: 800px) {
+  .offering {
+    width: 90%;
+  }
+  .row {
+    justify-content: center;
+  }
+}

@@ -1,0 +1,57 @@
+.video-item {
+  .icon-box {
+    width: 100%;
+    padding-bottom: 60px;
+  }
+  &__title {
+    position: relative;
+    .menu-container {
+      position: absolute;
+      right: -5px;
+      top: -5px;
+    }
+  }
+}
+.link {
+  color: #5d2a9b;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 1200px) {
+  .video-item {
+    &__title {
+      position: relative;
+      .menu-container {
+        position: absolute;
+        right: -25px;
+        top: -5px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .video-item {
+    &__title {
+      position: relative;
+      .menu-container {
+        position: absolute;
+        right: -25px;
+        top: -5px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 770px) {
+  .video-item {
+    &__title {
+      position: relative;
+      .menu-container {
+        position: absolute;
+        right: -25px;
+        top: -5px;
+      }
+    }
+  }
+}

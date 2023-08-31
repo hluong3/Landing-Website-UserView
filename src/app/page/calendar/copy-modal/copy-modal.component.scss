@@ -1,0 +1,135 @@
+.mat-dialog-container {
+  position: relative;
+}
+.copy-modal {
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: #5f249f;
+  &__close {
+    position: relative;
+    bottom: 5px;
+    left: calc(100% - 20px);
+    cursor: pointer;
+    &:hover {
+      background-color: #d0dfe8;
+    }
+  }
+  h3 {
+    text-align: center;
+    margin-top: 0;
+    font-weight: 500;
+    display: inline-block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+  }
+  .form {
+    position: relative;
+    width: 80%;
+    height: 80%;
+    border-radius: 30px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .form-left-decoration,
+  .form-right-decoration {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 20px;
+    border-radius: 20px;
+    background: #5f249f;
+  }
+  .form-left-decoration {
+    bottom: 60px;
+    left: -30px;
+  }
+  .form-right-decoration {
+    top: 60px;
+    right: -30px;
+  }
+  .form-left-decoration:before,
+  .form-left-decoration:after,
+  .form-right-decoration:before,
+  .form-right-decoration:after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 20px;
+    border-radius: 30px;
+    background: #fff;
+  }
+  .form-left-decoration:before {
+    top: -20px;
+  }
+  .form-left-decoration:after {
+    top: 20px;
+    left: 10px;
+  }
+  .form-right-decoration:before {
+    top: -20px;
+    right: 0;
+  }
+  .form-right-decoration:after {
+    top: 20px;
+    right: 10px;
+  }
+  .circle {
+    position: absolute;
+    bottom: 80px;
+    left: -55px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+  }
+  .form-inner {
+    width: 100%;
+    padding: 40px;
+    &__action {
+      margin-top: 20px;
+      display: flex;
+    }
+  }
+  .form-inner input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    background: #d0dfe8;
+    padding-left: 30px;
+  }
+  .form-inner textarea {
+    resize: none;
+  }
+  button {
+    width: 85px;
+    padding: 10px;
+    border-radius: 20px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border: none;
+    background: #5d2a9b;
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+  }
+  button:hover {
+    background: #6423b3;
+  }
+  @media (min-width: 568px) {
+    form {
+      width: 60%;
+    }
+  }
+}

@@ -1,0 +1,183 @@
+<!-- ======= Breadcrumbs Section ======= -->
+<section class="breadcrumbs">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <ol>
+        <li><a routerLink="/home">Home</a></li>
+        <li><a routerLink="../">Training</a></li>
+        <li>{{ title }}</li>
+      </ol>
+    </div>
+  </div>
+</section>
+<!-- End Breadcrumbs Section -->
+<!--Vertical Menu content -->
+
+<!--Vertical Menu content -->
+
+<!-- Modal -->
+<main id="main">
+  <!-- ======= Pricing Section ======= -->
+  <section class="inner-page">
+    <div class="container">
+      <!-- Data Grid -->
+      <div class="row">
+        <div class="limiter">
+          <div class="container-table100">
+            <div class="wrap-table100">
+              <div class="table100 ver1 m-b-110 table-list">
+                <div class="table100-head">
+                  <table>
+                    <thead>
+                      <tr class="row100 head">
+                        <th class="cell100 column2 text-center">Title</th>
+
+                        <th class="cell100 column3 text-center">Description</th>
+                        <th class="cell100 column1 text-center">Location</th>
+                        <th
+                          class="cell100 column3 pointer text-center"
+                          (click)="sortBy('start')"
+                        >
+                          Start Time
+                        </th>
+                        <th
+                          class="cell100 column3 pointer text-center"
+                          (click)="sortBy('end')"
+                        >
+                          End Time
+                        </th>
+                        <th class="cell100 column1">Duration</th>
+                        <th class="cell100 column2">Category</th>
+                        <th class="cell100 column2">Industry</th>
+                        <th class="cell100 column2">Region</th>
+                        <th class="cell100 column1 text-center">Select</th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+                <ngx-loading [show]="loading"></ngx-loading>
+                <div class="table100-body js-pscroll ps ps--active-y">
+                  <table class="table100">
+                    <tbody>
+                      <tr class="row100 body" *ngFor="let event of events">
+                        <td class="cell100 column2 text-center">
+                          {{ event.title }}
+                        </td>
+                        <td
+                          class="cell100 column3 text-center"
+                          [title]="event?.description"
+                        >
+                          <p class="short-text">
+                            {{ event?.description }}
+                          </p>
+                        </td>
+                        <ng-container
+                          *ngIf="
+                            event.locationType === 'Geographical Location';
+                            else linkBlock
+                          "
+                        >
+                          <td
+                            class="cell100 column1"
+                            [title]="event?.location || ''"
+                          >
+                            {{ event?.location }}
+                          </td>
+                        </ng-container>
+                        <ng-template #linkBlock>
+                          <td class="cell100 column1">
+                            <a [href]="event?.location">Online</a>
+                          </td>
+                        </ng-template>
+                        <td class="cell100 column3 text-center">
+                          {{
+                            event.startTime
+                              | convertTimeZone: "M/D/yyyy, h:mm A"
+                          }}
+                        </td>
+                        <td class="cell100 column3 text-center">
+                          {{
+                            event.endTime | convertTimeZone: "M/D/yyyy, h:mm A"
+                          }}
+                        </td>
+                        <td class="cell100 column1 allDay">
+                          {{ getDistanceTime(event) }}
+                        </td>
+                        <td class="cell100 column2">
+                          {{ event?.calendarCategoryId?.name }}
+                        </td>
+                        <td
+                          class="cell100 column2"
+                          [title]="event.industryId?.description || ''"
+                        >
+                          <p
+                            *ngFor="let item of event?.industries"
+                            [title]="item.description || ''"
+                          >
+                            {{ item.name }}
+                          </p>
+                        </td>
+                        <td
+                          class="cell100 column2"
+                          [title]="event.regionId?.description || ''"
+                        >
+                          <p
+                            *ngFor="let item of event?.regions"
+                            [title]="item.description || ''"
+                          >
+                            {{ item.name }}
+                          </p>
+                        </td>
+                        <td class="cell100 column1 text-center">
+                          <button
+                            mat-icon-button
+                            *ngIf="isPast(event.endTime) === true"
+                            [matMenuTriggerFor]="menu"
+                          >
+                            <mat-icon>more_vert</mat-icon>
+                          </button>
+                          <mat-menu #menu="matMenu">
+                            <button
+                              mat-menu-item
+                              (click)="handleICSDownload(event)"
+                            >
+                              Add to Calendar
+                            </button>
+                            <button
+                              *ngIf="
+                                event.locationType !== 'Geographical Location'
+                              "
+                              (click)="copyAchievements(event)"
+                              mat-menu-item
+                            >
+                              Get link
+                            </button>
+                            <button
+                              mat-menu-item
+                              (click)="handleShareWithEmail(event)"
+                            >
+                              Share with
+                            </button>
+                          </mat-menu>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <!-- Data Grid -->
+                  <div class="ps__rail-x" style="left: 0px; bottom: 0px">
+                    <div
+                      class="ps__thumb-x"
+                      tabindex="0"
+                      style="left: 0px; width: 0px"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

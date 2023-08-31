@@ -1,0 +1,22 @@
+<mat-icon class="copy-modal__close" mat-dialog-close>close</mat-icon>
+<div class="copy-modal">
+  <div class="form decor">
+    <div class="form-left-decoration"></div>
+    <div class="form-right-decoration"></div>
+    <div class="circle"></div>
+    <div class="form-inner">
+      <h3>Get Link to {{ data?.title }}</h3>
+      <div class="form-inner__action">
+        <input
+          type="text"
+          [value]="data?.location"
+          placeholder="Link"
+          readonly
+        />
+        <button (click)="handleCopy()">
+          {{ afterCopied ? "Copied" : "Copy" }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

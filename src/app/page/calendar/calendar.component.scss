@@ -1,0 +1,26 @@
+@import "tippy.js/dist/tippy.css";
+@import "tippy.js/themes/light.css";
+.categories {
+  li {
+    width: fit-content;
+    height: max-content;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    padding: 5px;
+    line-height: 16px;
+  }
+}
+.footer-links {
+  ul {
+    li {
+      color: #5d2a9b;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+}
+
+.tippy-tooltip.tomato-theme {
+  background-color: tomato;
+  color: yellow;
+}

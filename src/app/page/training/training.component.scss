@@ -1,0 +1,25 @@
+li {
+  list-style: none;
+}
+.breadcrumbs {
+  .container {
+    font-family: "Segoe UI";
+  }
+}
+.training {
+  &-item {
+    .icon-box {
+      .icon {
+        width: 100%;
+        margin: 0;
+        margin-bottom: 40px;
+        img {
+          display: block;
+          max-width: 100%;
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+}

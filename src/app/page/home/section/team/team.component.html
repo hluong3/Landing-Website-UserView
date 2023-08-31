@@ -1,0 +1,73 @@
+<!-- ======= Team Section ======= -->
+<section id="services" class="services section-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9">
+        <div *ngIf="showOffering" class="row">
+          <div
+            class="col-lg-4 col-md-6 d-flex align-items-stretch"
+            *ngFor="let item of offeringList; let i = index"
+            style="padding-bottom: 20px"
+          >
+            <div
+              class="icon-box"
+              data-aos="fade-up"
+              [attr.data-aos-delay]="100 * i"
+            >
+              <a [routerLink]="['/offering', item._id]">
+                <div class="icon">
+                  <img
+                    [src]="trustImage(item.thumbnail)"
+                    width="131"
+                    height="131"
+                    alt=""
+                  />
+                </div>
+                <h4 class="link">
+                  {{ item.offeringName }}
+                </h4></a
+              >
+              <p class="cut-text">{{ item.shortDescription }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3" data-aos="fade-up">
+        <div id="footer">
+          <div class="footer-top">
+            <div class="container">
+              <div class="row">
+                <div class="footer-links">
+                  <h4>Modern Workplace Resources</h4>
+                  <ul>
+                    <li *ngFor="let menu of sidebarMenu">
+                      <i class="bx bx-chevron-right"></i>&nbsp;&nbsp;
+                      <ng-container
+                        *ngIf="menu.type === 'Inner-Page'; else directLink"
+                      >
+                        <a
+                          [routerLink]="menu.link"
+                          [title]="menu.shortDescription"
+                          >{{ menu.name }}</a
+                        >
+                      </ng-container>
+                      <ng-template #directLink>
+                        <a
+                          href="{{ menu.link }}"
+                          [title]="menu.shortDescription"
+                          target="_blank"
+                          >{{ menu.name }}</a
+                        >
+                      </ng-template>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Team Section -->

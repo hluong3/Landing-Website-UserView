@@ -1,0 +1,11 @@
+{
+    "clientId": "${APPLICATION_ID}",
+    "tenantId": "${TENANT_ID}",
+    "Ocp_Apim_Subscription_Key": "${OCP_APIM_SUBSCRIPTION_KEY}",
+    "API_URL": "${API_URL}",
+    "API_SCOPE": "${API_SCOPE}",
+    "CLIENT_ID": "${CLIENT_ID}",
+    "ISSUER" : "${ISSUER}",
+    "LOGIN_REDIRECT_URI" : "${LOGIN_REDIRECT_URI}",
+    "LOGOUT_REDIRECT_URI" : "${LOGOUT_REDIRECT_URI}"
+}

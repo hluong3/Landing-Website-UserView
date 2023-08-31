@@ -1,0 +1,49 @@
+.videomw {
+  margin-right: 0px;
+  .icon-box {
+    padding: 54px 20px 50px 20px;
+    .icon {
+      width: 131px;
+      height: 131px;
+      img {
+        max-width: 131px;
+        max-height: 131px;
+        height: auto;
+        border-radius: 50%;
+      }
+    }
+  }
+  h4 {
+    min-width: 180px;
+    width: 100%;
+  }
+}
+.title {
+  color: #5d2a9b;
+  text-decoration: none;
+}
+.services {
+  padding-top: 0;
+}
+.breadcrumbs {
+  .container {
+    font-family: "Segoe UI";
+  }
+}
+
+.video-library {
+  &__banner {
+    height: fit-content;
+  }
+}
+
+// @media screen and(max-width: 1400px) {
+//   .videomw {
+//     margin-right: 20px;
+//   }
+// }
+// @media screen and(max-width: 1200px) {
+//   .videomw {
+//     margin-right: 0px;
+//   }
+// }

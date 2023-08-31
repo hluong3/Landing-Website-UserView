@@ -1,0 +1,54 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<mat-icon class="share-modal__close" mat-dialog-close>close</mat-icon>
+<h2 mat-dialog-title class="share-with__title">Share via email</h2>
+<mat-dialog-content class="mat-typography">
+  <form
+    id="share-form"
+    class="example-form"
+    [formGroup]="shareForm"
+    (ngSubmit)="handleShare()"
+  >
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        matInput
+        cdkFocusInitial
+        formControlName="email"
+        placeholder="Ex. pat@example.com"
+      />
+      <mat-error
+        *ngIf="
+          shareForm.get('email').hasError('email') &&
+          !shareForm.get('email').hasError('required')
+        "
+      >
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="shareForm.get('email').hasError('required')">
+        Email is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Message</mat-label>
+      <textarea
+        matInput
+        #message
+        type="area"
+        maxlength="256"
+        formControlName="message"
+        placeholder="Ex. I need help with..."
+      ></textarea>
+      <mat-hint align="start"
+        ><strong>Don't disclose personal info</strong>
+      </mat-hint>
+      <mat-hint align="end">{{ message.value.length }} / 256</mat-hint>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close color="primary">Cancel</button>
+  <button mat-raised-button type="submit" color="primary" form="share-form">
+    Share
+  </button>
+</mat-dialog-actions>

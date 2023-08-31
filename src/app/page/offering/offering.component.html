@@ -1,0 +1,226 @@
+<div id="offering">
+  <!-- ======= Breadcrumbs Section ======= -->
+  <section class="breadcrumbs">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center">
+        <ol>
+          <li><a routerLink="/home">Home</a></li>
+          <li>Offering</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  <!-- End Breadcrumbs Section -->
+
+  <!-- ======= Pricing Section ======= -->
+  <section class="inner-page">
+    <div class="container">
+      <section id="pricing" class="pricing">
+        <div class="container" data-aos="fade-up">
+          <div class="section-title">
+            <h2>{{ offering?.offeringName }}</h2>
+            <p>{{ offering?.shortDescription }}</p>
+          </div>
+          <div class="row">
+            <div
+              class="col-lg-3 offering-module"
+              *ngFor="let module of offering?.offeringModules; index as offerI"
+              data-aos="fade-up"
+              [attr.data-aos-delay]="100 * (offerI + 1)"
+            >
+              <div class="box featured">
+                <h3 class="cut-text">{{ module?.name }}</h3>
+                <!-- <div class="row gy-5 gx-4">
+                  <div class="col-md-6 tab-title"><h3>Client Facing</h3></div>
+                  <div class="col-md-6 tab-nav">
+                    <ul class="nav nav-pills">
+                      <li class="nav-item">
+                        <button
+                          class="nav-link w-100 active"
+                          data-bs-toggle="pill"
+                          [attr.href]="'#tab-' + offerI * 2"
+                        >
+                          Yes
+                        </button>
+                      </li>
+                      <li class="nav-item">
+                        <button
+                          class="nav-link w-100"
+                          data-bs-toggle="pill"
+                          [attr.href]="'#tab-' + (offerI * 2 + 1)"
+                        >
+                          No
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                </div> -->
+                <div class="tab-content">
+                  <ng-container
+                    *ngFor="
+                      let clientFacingType of ['Yes', 'No'];
+                      let i = index
+                    "
+                  >
+                    <div
+                      [id]="'tab-' + (offerI * 2 + i)"
+                      class="tab-pane fade p-0"
+                      [ngClass]="{ 'active show': i === 0 }"
+                    >
+                      <div class="row">
+                        <ul>
+                          <ng-container
+                            *ngFor="
+                              let item of module?.clientFacings;
+                              index as moduleI;
+                              first as isFirst
+                            "
+                          >
+                            <li
+                              *ngIf="
+                                item?.submenus &&
+                                item?.menuName !== '' &&
+                                item.menuName
+                              "
+                            >
+                              <a
+                                data-bs-toggle="collapse"
+                                class="collapsed cut-text"
+                                [attr.data-bs-target]="
+                                  '#dxc' + offering.id + offerI + moduleI
+                                "
+                              >
+                                {{ item?.menuName }}
+                                <i class="bx bx-chevron-down icon-show"></i
+                                ><i class="bx bx-chevron-up"></i>
+                              </a>
+                              <div
+                                [id]="'dxc' + offering.id + offerI + moduleI"
+                                [ngClass]="{ collapse: true }"
+                                data-bs-parent=".accordion-list"
+                              >
+                                <ul>
+                                  <ng-container
+                                    *ngFor="let subitem of item.submenus"
+                                  >
+                                    <ng-container
+                                      *ngIf="
+                                        subitem.type === 'List';
+                                        else normalLink
+                                      "
+                                      ><li>
+                                        <i
+                                          class="bx bx-chevron-up icon-close"
+                                        ></i>
+                                        <a
+                                          class="child-link cut-text"
+                                          [routerLink]="subitem._id"
+                                          >{{ subitem?.name }}</a
+                                        >
+                                      </li>
+                                    </ng-container>
+                                    <ng-template #normalLink>
+                                      <li>
+                                        <i
+                                          class="bx bx-chevron-up icon-close"
+                                        ></i>
+                                        <a
+                                          class="child-link cut-text"
+                                          [ngClass]="{
+                                            isDisabled: !subitem.link
+                                          }"
+                                          [href]="subitem.link"
+                                          target="_blank"
+                                          >{{ subitem?.name }}</a
+                                        >
+                                      </li>
+                                    </ng-template>
+                                  </ng-container>
+                                </ul>
+                              </div>
+                            </li>
+                            <ng-container
+                              *ngIf="
+                                item?.submenus &&
+                                (item?.menuName === '' || !item.menuName)
+                              "
+                            >
+                              <ng-container
+                                *ngFor="let subitem of item?.submenus"
+                              >
+                                <ng-container
+                                  *ngIf="
+                                    subitem.type === 'List';
+                                    else normalLink
+                                  "
+                                  ><li>
+                                    <i class="bx bx-chevron-up"></i>
+                                    <a
+                                      class="child-link"
+                                      [routerLink]="subitem._id"
+                                      >{{ subitem?.name }}</a
+                                    >
+                                  </li></ng-container
+                                >
+
+                                <ng-template #normalLink>
+                                  <li [ngClass]="{ isDisabled: !subitem.link }">
+                                    <i class="bx bx-chevron-up"></i>
+                                    <a
+                                      class="child-link"
+                                      [ngClass]="{ isDisabled: !subitem.link }"
+                                      [href]="subitem.link"
+                                      target="_blank"
+                                      >{{ subitem?.name }}</a
+                                    >
+                                  </li>
+                                </ng-template>
+                              </ng-container>
+                            </ng-container>
+                            <ng-container
+                              *ngIf="
+                                !item?.submenus &&
+                                item?.menuName !== '' &&
+                                item.menuName
+                              "
+                            >
+                              <li>
+                                <i class="bx bx-chevron-up"></i>
+                                <ng-container
+                                  *ngIf="
+                                    subitem.type === 'List';
+                                    else normalLink
+                                  "
+                                >
+                                  <a
+                                    class="child-link"
+                                    [routerLink]="subitem._id"
+                                    >{{ subitem?.name }}</a
+                                  >
+                                </ng-container>
+                                <ng-template #normalLink>
+                                  <a
+                                    class="child-link"
+                                    [ngClass]="{ isDisabled: !subitem.link }"
+                                    [href]="subitem.link"
+                                    target="_blank"
+                                    >{{subitem?.name}</a
+                                  >
+                                </ng-template>
+                              </li>
+                            </ng-container>
+                          </ng-container>
+                        </ul>
+                      </div>
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Pricing Section -->
+    </div>
+  </section>
+</div>

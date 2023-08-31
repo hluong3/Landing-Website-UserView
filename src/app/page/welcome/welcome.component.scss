@@ -1,0 +1,50 @@
+@import "../../../style/new-dxc-style";
+
+$topnav-background-color: #fff;
+.welcome-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  background: $topnav-background-color;
+  text-align: center;
+  color: #000;
+  .col-lg-8 {
+    padding: 0;
+  }
+
+  #branding {
+    height: 100%;
+    margin-left: 0px;
+    background-color: inherit !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    -webkit-background-size: cover !important;
+    -moz-background-size: cover !important;
+    -o-background-size: cover !important;
+  }
+
+  .content-box {
+    display: flex;
+    align-items: center;
+    .content {
+      padding: 1rem;
+      @include button-style(0);
+      h1 {
+        margin: 3rem 0;
+      }
+      .btn-login {
+        font-weight: 900;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+
+  .background-blur {
+    background: url(../../../assets/img/illustration.png) !important;
+  }
+}

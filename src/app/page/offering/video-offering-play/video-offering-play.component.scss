@@ -1,0 +1,23 @@
+.video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+#footer .footer-top .footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+@media only screen and (max-width: 1300px) {
+  .video-container {
+    app-video-player {
+      .video-js {
+        video {
+          margin: 10px 30px;
+        }
+      }
+    }
+  }
+}

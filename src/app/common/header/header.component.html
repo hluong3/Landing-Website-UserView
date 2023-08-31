@@ -1,0 +1,57 @@
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+  <div class="container d-flex align-items-center justify-content-between">
+    <h1 class="logo">
+      <!--<a href="index.html">OnePage</a>-->
+      <a href="index.html" class="logo"
+        ><img src="assets/img/logo.png" alt="" class="img-fluid"
+      /></a>
+    </h1>
+    <!-- <p>{{timezone}}</p> -->
+    <div class="header__menu">
+      <div class="header__time">
+        <mat-icon>timer</mat-icon>
+        <p class="header__timezone__label">
+          {{
+            setTimeZone === ""
+              ? ""
+              : "(GMT " + moment.tz(setTimeZone).format("Z") + ") "
+          }}
+        </p>
+        <input
+          #inputTimeZone
+          type="text"
+          matInput
+          class="header__timezone"
+          [formControl]="timeZoneForm"
+          [matAutocomplete]="auto"
+          (focus)="onFocusInput()"
+          (blur)="onBlurInput()"
+        />
+        <mat-autocomplete
+          #auto="matAutocomplete"
+          (optionSelected)="onSelectOption($event)"
+          panelWidth="auto"
+        >
+          <mat-option
+            class="header__timezone__option cut-text"
+            *ngFor="let item of filteredOptions | async"
+            [value]="item"
+            [title]="item"
+          >
+            {{ "(" + moment.tz(item).format("Z") + ") " + item }}
+          </mat-option>
+        </mat-autocomplete>
+      </div>
+      <button mat-button *ngIf="isAuthenticated" [matMenuTriggerFor]="menu">
+        <mat-icon>person</mat-icon>
+        {{ userName }}
+        <mat-icon>expand_more</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" xPosition="after">
+        <button mat-menu-item (click)="oktaAuth.logout()">Logout</button>
+      </mat-menu>
+    </div>
+  </div>
+</header>
+<!-- End Header -->

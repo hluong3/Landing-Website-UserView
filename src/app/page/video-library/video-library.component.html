@@ -1,0 +1,158 @@
+<!-- ======= Breadcrumbs Section ======= -->
+<section class="breadcrumbs">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <ol>
+        <li>
+          <a routerLink="/" routerLinkActive="router-link-active">Home</a>
+        </li>
+        <li>Video Library</li>
+      </ol>
+    </div>
+  </div>
+</section>
+<!-- End Breadcrumbs Section -->
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex align-items-center">
+  <div class="container">
+    <div class="row">
+      <div
+        class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center video-library__banner"
+      >
+        <h1 data-aos="fade-up">{{ bannerVideos?.title }}</h1>
+        <h2 data-aos="fade-up" data-aos-delay="400">
+          {{ bannerVideos?.description }}
+        </h2>
+        <!-- <div data-aos="fade-up" data-aos-delay="800"> <a href="#about" class="btn-get-started scrollto">Get Started</a> </div>-->
+      </div>
+      <div
+        class="col-lg-6 order-1 order-lg-2 hero-img"
+        data-aos="fade-left"
+        data-aos-delay="100"
+      >
+        <img
+          [src]="trustImage(bannerVideos?.image)"
+          class="img-fluid animated"
+          alt=""
+        />
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Hero -->
+
+<main id="main">
+  <!-- ======= Team Section ======= -->
+  <section id="services" class="services section-bg">
+    <div class="container" data-aos="fade-up">
+      <div class="row">
+        <div class="col-lg-9">
+          <div class="row">
+            <h4 class="title mt-4">Modern Workplace Videos</h4>
+            <h4>&nbsp;</h4>
+          </div>
+          <div class="row">
+            <div
+              class="col-lg-4 col-md-6 d-flex align-items-stretch mt-3 videomw"
+              *ngFor="let item of modernVideos"
+            >
+              <div class="icon-box">
+                <div class="icon">
+                  <img [src]="trustImage(item.thumbnail)" alt="" />
+                </div>
+                <h4>
+                  <a
+                    class="cut-text"
+                    routerLink="videos"
+                    [queryParams]="{ filter: 'mw', id: item._id }"
+                    >{{ item.name }}</a
+                  >
+                </h4>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <h4>&nbsp;</h4>
+            <h4 class="title">Offering Videos</h4>
+            <h4>&nbsp;</h4>
+          </div>
+          <div class="row">
+            <div
+              class="col-lg-4 col-md-6 d-flex align-items-stretch"
+              *ngFor="let item of offeringVideos"
+              style="padding-bottom: 20px; border-radius: 50%"
+            >
+              <div class="icon-box">
+                <div class="icon">
+                  <img
+                    [src]="trustImage(item.thumbnail)"
+                    width="131"
+                    height="131"
+                    alt=""
+                  />
+                </div>
+                <h4>
+                  <a
+                    class="cut-text"
+                    routerLink="videos"
+                    [queryParams]="{ filter: 'offering', id: item._id }"
+                    >{{ item.offeringName }}</a
+                  >
+                </h4>
+                <p class="cut-text">{{ item.shortDescription }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 mt-4">
+          <div id="footer">
+            <div class="footer-top">
+              <div class="container">
+                <div class="row">
+                  <div class="footer-links">
+                    <h4>Additional Video Libraries</h4>
+                    <ul>
+                      <li *ngFor="let menu of menuVideos">
+                        <i class="bx bx-chevron-right"></i>&nbsp;&nbsp;
+                        <ng-container
+                          *ngIf="menu.type === 'Inner-Page'; else directLink"
+                        >
+                          <ng-container
+                            *ngIf="menu.typeFiler !== ''; else noFilter"
+                          >
+                            <a
+                              [routerLink]="menu.link"
+                              [title]="menu.shortDescription"
+                              [queryParams]="{ type: menu.typeFilter }"
+                              >{{ menu.name }}</a
+                            >
+                          </ng-container>
+                          <ng-template #noFilter>
+                            <a
+                              [routerLink]="menu.link"
+                              [title]="menu.shortDescription"
+                              >{{ menu.name }}</a
+                            >
+                          </ng-template>
+                        </ng-container>
+                        <ng-template #directLink>
+                          <a
+                            href="{{ menu.link }}"
+                            [title]="menu.shortDescription"
+                            target="_blank"
+                            >{{ menu.name }}</a
+                          >
+                        </ng-template>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

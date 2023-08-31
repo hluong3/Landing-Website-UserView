@@ -1,0 +1,43 @@
+<!-- ======= Breadcrumbs Section ======= -->
+<section class="breadcrumbs">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <ol>
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="../">Training</a></li>
+        <li>Offering specific training</li>
+      </ol>
+    </div>
+  </div>
+</section>
+<!-- End Breadcrumbs Section -->
+
+<!-- ======= Team Section ======= -->
+<section id="services" class="services section-bg">
+  <!-- <ngx-loading [show]="loading"></ngx-loading> -->
+  <div class="container" data-aos="fade-up">
+    <div class="row">
+      <ng-container *ngFor="let item of offerings; first as isFirst">
+        <div class="col-lg-3 col-md-4 d-flex align-items-stretch mt-4 offering">
+          <div class="icon-box">
+            <div class="icon">
+              <img [src]="trustImage(item.thumbnail)" alt="" />
+            </div>
+            <table>
+              <tr>
+                <td>
+                  <h4>
+                    <a [routerLink]="['offering', item._id]">{{
+                      item.offeringName
+                    }}</a>
+                  </h4>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</section>
+<!-- End Team Section -->

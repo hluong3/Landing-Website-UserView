@@ -1,0 +1,96 @@
+.video-item {
+  width: 100%;
+  height: auto;
+}
+.icon-box {
+  position: relative;
+}
+.context-menu {
+  font-size: 20px;
+  cursor: pointer;
+  cursor: hand;
+  pointer-events: all;
+  margin-left: 98%;
+  position: absolute;
+  top: 170px;
+  right: 10px;
+}
+
+div.context-menu:after {
+  float: right;
+}
+
+p.contextMenu:after > span {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+h1.context-menu:after,
+h2.context-menu:after,
+h3.context-menu:after,
+h4.context-menu:after,
+h5.context-menu:after {
+  margin-left: 300px;
+}
+
+.context-menu-container {
+  background-color: white;
+  z-index: 10000 !important;
+  border-radius: 5px;
+  position: absolute;
+  right: 5px;
+  top: 123px;
+  padding: 3px;
+  -webkit-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.18);
+  -moz-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.18);
+  min-width: 90px;
+  transition: all 0.3s ease-in-out;
+  pointer-events: all;
+}
+
+.context-menu-container > ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  border: 1px thin #5f249f;
+}
+
+.context-menu-container > ul > li {
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.context-menu-container > ul > li.disabled {
+  color: #b7b7b7;
+}
+
+.context-menu-container > ul > li.disabled:hover {
+  background-color: white;
+}
+
+.context-menu-container > ul > li:hover {
+  background-color: #c4c4c4;
+}
+
+.context-menu-container > ul > li.danger:hover {
+  background-color: #ff6959;
+}
+
+.context-menu-container > ul > li.warning:hover {
+  background-color: #fff27c;
+}
+
+.context-menu-container > ul > li.danger.disabled:hover,
+.context-menu-container > ul > li.warning.disabled:hover {
+  background-color: white;
+}
+.services .icon-box:hover {
+  border-color: rgb(109, 104, 104);
+  box-shadow: 0px 0 35px 0 rgb(0 0 0 / 10%);
+}
+
+.video-play {
+  width: fit-content;
+  height: max-content;
+}
